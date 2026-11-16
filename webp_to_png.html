@@ -85,12 +85,16 @@
           preview.src = pngUrl;
           preview.style.display = "block";
 
+          // Obtener el nombre original sin extensión y agregar .png
+          const originalNameWithoutExt = file.name.replace(/\.[^/.]+$/, "");
+          const newFileName = `${originalNameWithoutExt}.png`;
+
           // Preparar el botón de descarga
           downloadBtn.style.display = "inline-block";
           downloadBtn.onclick = () => {
             const link = document.createElement('a');
             link.href = pngUrl;
-            link.download = 'imagen-convertida.png';
+            link.download = newFileName;
             link.click();
           };
         } catch (err) {
